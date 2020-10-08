@@ -1,0 +1,4 @@
+power==1.4
+python-kasa==0.4.0.dev1
+gpiozero==1.5.1
+cputemp==0.0.7
