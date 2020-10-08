@@ -26,11 +26,11 @@ An input will ask you for the name of your device, in my case I set it up as "ch
 If the device is found correctly you should get a confirmation message and the application will keep running.
 
 ## Why
-When you are working on your laptop you often leave it plug to the charger for several hours.
+When you are working on your laptop you often leave it plugged to the charger for several hours.
 We all know batteries tend to deteriorate overtime especially if temperature rises too much, and it may lead to a laptop with no battery life left in it, sooner than you expected. More info here: https://batteryuniversity.com/learn/article/how_to_prolong_lithium_based_batteries
 
 
-Some specific laptops have this functionality built in already, but may don't so this is a simple and inexpensive fix.
+Some specific laptops have similar functionality built in already, but many don't so this is a simple and inexpensive fix.
 
 
 ## Improvements
