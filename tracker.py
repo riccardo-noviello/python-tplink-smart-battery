@@ -74,7 +74,7 @@ async def main():
         if int(powerStat) >= 99 and temp >= 70.0:
             await switch_plug(False, plug)
             messagebox.showwarning(
-                "Alert!", "Battery Charged! Turning plug Off")
+                "Alert!", "Battery Charged with high temperature! Turning plug Off")
             break
 
         if int(powerStat) <= 20 and chargeStat == "Discharging":
