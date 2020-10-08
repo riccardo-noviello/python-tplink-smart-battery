@@ -7,13 +7,14 @@ It works on Ubuntu 20.04 and TPLink HS100, but should also work with HS100, HS10
 
 
 ## How it works
-Given a TPLink Kasa Smart plug is installed 
 We made use of existing technology on the market and build a Smart Battery Plug software that 
 will cut off the power supply to the battery once it is 100% charged and the CPU temperature reaches high levels.
 
 The Plug will turn on again once the battery falls below 20%, this prevents micro charging cycles prolonging the battery life too.
 
 ## Run
+We assume a TPLink Kasa Smart plug is installed in your home.
+
 `python tracker.py`
 
 ![Image 2](images/input1.png)
