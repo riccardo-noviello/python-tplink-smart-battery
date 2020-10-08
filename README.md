@@ -19,7 +19,7 @@ We assume a TPLink Kasa Smart plug is installed in your home.
 
 ![Image 2](images/input1.png)
 
-An input will ask you for the name of your device, in my case I set it up as "charger1", so I enter that an press OK.
+A prompt will ask you for the name of your device, in my case I set it up as "charger1", so I enter that and press OK.
 
 ![Image 3](images/confirmation.png)
 

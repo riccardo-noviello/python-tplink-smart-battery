@@ -72,6 +72,7 @@ async def main():
         chargeStat = chargeState()
         temp = cputemp.convertTemp(cputemp.readTemp())
         print(str(temp) + " °C")
+        print(chargeStat)
         if int(powerStat) >= 99 and temp >= 70.0:
             await switchPlug(False, plug)
             messagebox.showwarning(
