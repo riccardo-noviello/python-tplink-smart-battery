@@ -4,6 +4,7 @@ from tkinter import messagebox, simpledialog
 import asyncio
 from kasa import SmartPlug, SmartDevice, Discover
 from cputemp import cputemp
+import time
 
 def powerFunction():
     current_stat = open(
@@ -17,7 +18,7 @@ def chargeState():
     return charge_state
 
 
-async def find_host_from_alias(alias, target="255.255.255.255", timeout=1, attempts=3):
+async def findHostFromAlias(alias, target="255.255.255.255", timeout=1, attempts=3):
     """Discover a device identified by its alias."""
     print(
         f"Trying to discover {alias} using {attempts} attempts of {timeout} seconds"
@@ -33,8 +34,8 @@ async def find_host_from_alias(alias, target="255.255.255.255", timeout=1, attem
     return None
 
 
-async def connect_switch_plug(alias):
-    host = await find_host_from_alias(alias)
+async def connectSwitchPlug(alias):
+    host = await findHostFromAlias(alias)
 
     p = SmartPlug(host)
     await p.update()
@@ -42,7 +43,7 @@ async def connect_switch_plug(alias):
     return p
 
 
-async def switch_plug(on_off, plug):
+async def switchPlug(on_off, plug):
     p = plug
     if(on_off):
         await p.turn_on()
@@ -63,25 +64,26 @@ async def main():
         return
 
     powerStat = 100
-    plug = await connect_switch_plug(alias)
+    plug = await connectSwitchPlug(alias)
     messagebox.showwarning(
         "Running!", "Battry Status Tracker is now running on machine")
-    while int(powerStat) >= 30:
+    while int(powerStat):
         powerStat = powerFunction()
         chargeStat = chargeState()
         temp = cputemp.convertTemp(cputemp.readTemp())
         print(str(temp) + " °C")
         if int(powerStat) >= 99 and temp >= 70.0:
-            await switch_plug(False, plug)
+            await switchPlug(False, plug)
             messagebox.showwarning(
                 "Alert!", "Battery Charged with high temperature! Turning plug Off")
             break
 
         if int(powerStat) <= 20 and chargeStat == "Discharging":
-            await switch_plug(True, plug)
+            await switchPlug(True, plug)
             messagebox.showwarning(
                 "Alert!", "Battery Low!\nCharging  Required!\nYour Battery Status:"+powerStat+"% ("+chargeStat+")\n Turning plug On")
             break
+        time.sleep(60)
 
 
 if __name__ == "__main__":
